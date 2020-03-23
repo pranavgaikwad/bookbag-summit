@@ -1,0 +1,24 @@
+== Red Hat Summit 2020: OpenShift Application Migration Lab
+
+=== Migrating Applications from OCP/OCS 3 to OCP/OCS 4
+
+This guide will provide you with hands-on exposure to the OpenShift Migration Tooling through a series of exercises migrating application workloads (both stateful and stateless) between OpenShift Clusters.
+
+=== Goals
+
+In this instructor-led, hands-on lab, you’ll experience:
+
+* Migrating applications from Red Hat OpenShift 3 clusters to Red Hat OpenShift 4 clusters using the Cluster Application Migration Tool (CAM) provided by OpenShift Container Platform 4.3.
+* Use cases that migrate applications preserving state, including how to migrate OpenShift Container Storage 3 (Gluster) to OpenShift Container Storage 4 (Ceph).
+
+=== Labs
+
+link:./1.adoc[Lab 1 - Introduction] +
+link:./2.adoc[Lab 2 - Prerequisites and Setup] +
+link:./3.adoc[Lab 3 - CAM Overview] +
+link:./4.adoc[Lab 4 - Migrate File-Uploader Application] +
+link:./5.adoc[Lab 5 - Migrate MSSQL Server Application] +
+link:./6.adoc[Lab 6 - Migrate Sock-Shop Application] +
+link:./7.adoc[Lab 7 - Debugging Failed Migrations] +
+link:./8.adoc[Lab 8 - Migration at Scale via API] +
+link:./9.adoc[Lab 9 - Wrap Up]
