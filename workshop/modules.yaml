@@ -26,6 +26,6 @@ modules:
     exit_sign: Debugging
   Debug:
     name: Debugging
-     exit_sign: Conclusion
+    exit_sign: Conclusion
   Conclusion:
     name: Conclusion
