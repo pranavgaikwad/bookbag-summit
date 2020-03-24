@@ -1,31 +1,31 @@
 ---
 modules:
   Intro:
-    name: Introduction
-    exit_sign: Environment
+    name: 1.0 Introduction
+    exit_sign: 2.0 Environment
   Environment:
-    name: Environment
-    exit_sign: Prerequisites
+    name: 2.0 Environment
+    exit_sign: 3.0 Prerequisites
   Prereqs:
-    name: Prerequisites
-    exit_sign: CAM Overview
+    name: 3.0 Prerequisites
+    exit_sign: 4.0 CAM Overview
   CAM:
-    name: CAM Overview
-    exit_sign: Migration Exercise I
+    name: 4.0 CAM Overview
+    exit_sign: 5.0 Migration Exercise I
   Ex1:
-    name: Migration Exercise I
-    exit_sign: Migration Exercise II
+    name: 5.0 Migration Exercise I
+    exit_sign: 6.0 Migration Exercise II
   Ex2:
-    name: Migration Exercise II
-    exit_sign: Migration Exercise III
+    name: 6.0 Migration Exercise II
+    exit_sign: 7.0 Migration Exercise III
   Ex3:
-    name: Migration Exercise III
-    exit_sign: Migration Exercise IV
+    name: 7.0 Migration Exercise III
+    exit_sign: 8.0 Migration Exercise IV
   Ex4:
-    name: Migration Exercise IV
-    exit_sign: Debugging
+    name: 8.0 Migration Exercise IV
+    exit_sign: 9.0 Debugging
   Debug:
-    name: Debugging
-    exit_sign: Conclusion
+    name: 9.0 Debugging
+    exit_sign: 10.0 Conclusion
   Conclusion:
-    name: Conclusion
+    name: 10.0 Conclusion
