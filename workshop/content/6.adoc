@@ -1,0 +1,24 @@
+== 6.0 Migrate Sock-Shop Application
+
+ACME Corporation is in the process of upgrading the production environment of their online socks store from OCP 3 to OCP 4. The application consists of various micro-services, and uses a shared NFS cluster for storage. ACME has already installed the 4.3 cluster, and you have been asked to migrate the Socks-Shop application from their 3.11 environment.
+
+The application and all of it’s resources are contained within the `sock-shop` namespace.
+
+image:./screenshots/lab6/sock-shop-main.png[SS Main]
+
+image:./screenshots/lab6/sock-shop-arch.png[SS Main]
+
+Rather than provide a step-by-step walkthrough as we have in the previous two labs, you’ll be on your own for this round.
+
+The high-level steps are as follows:
+
+[arabic]
+. Launch the CAM WebUI.
+. Add a new Migration Plan.
+. Be sure to specify `Move` vs Copy for the Persistent Volume transfer option; as we will be swinging the PVs to the new cluster but leaving the NFS storage as is.
+. Execute a `Migration` of the Plan.
+. Verify the application is functioning on the destination cluster.
+
+Next Lab: link:./7.adoc[Lab 7 - Debugging Failed Migrations] +
+Previous Lab: link:./5.adoc[Lab 5 - Migrate MSSQL Server Application] +
+link:./README.adoc[Home]

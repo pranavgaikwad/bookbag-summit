@@ -41,5 +41,5 @@ image:screenshots/lab1/lab-env-overview.png[Lab Environment Overview]
 |`bastion.<guid>.domain` |lab-user |r3dh4t1! |client-vm for 4.3 environment
 |===
 
-Next Lab: link:./2.md[Lab 2 - Prerequisites and Setup] +
-link:./README.md[Home]
+Next Lab: link:./2.adoc[Lab 2 - Prerequisites and Setup] +
+link:./README.adoc[Home]
