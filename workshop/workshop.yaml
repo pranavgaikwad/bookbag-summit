@@ -1,7 +1,14 @@
 ---
-name: OpenShift Application Migration Lab 
+name: OpenShift Application Migration Lab
 modules:
   activate:
-    - Intro 
+    - Intro
     - Environment
-    - Prereqs 
+    - Prereqs
+    - CAM
+    - Ex1
+    - Ex2
+    - Ex3
+    - Ex4
+    - Debug
+    - Conclusion

@@ -2,9 +2,30 @@
 modules:
   Intro:
     name: Introduction
-    exit_sign: Environment Settings
+    exit_sign: Environment
   Environment:
-    name: Environment Settings
-    exit_sign: Prerequisites & Setup
+    name: Environment
+    exit_sign: Prerequisites
   Prereqs:
-    name: Prerequisites & Setup
+    name: Prerequisites
+    exit_sign: CAM Overview
+  CAM:
+    name: CAM Overview
+    exit_sign: Migration Exercise I
+  Ex1:
+    name: Migration Exercise I
+    exit_sign: Migration Exercise II
+  Ex2:
+    name: Migration Exercise II
+    exit_sign: Migration Exercise III
+  Ex3:
+    name: Migration Exercise III
+    exit_sign: Migration Exercise IV
+  Ex4:
+    name: Migration Exercise IV
+    exit_sign: Debugging
+  Debug:
+    name: Debugging
+     exit_sign: Conclusion
+  Conclusion:
+    name: Conclusion
