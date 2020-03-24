@@ -1,4 +1,4 @@
 ---
 modules:
-  CAM_LAB:
+  CAM-LAB:
     name: OpenShift Application Migration Lab
