@@ -1,3 +1,8 @@
+:USER_GUID: %GUID%
+:USERNAME: %user%
+:CLUSTER: %cluster%
+
+
 == Red Hat Summit 2020: OpenShift Application Migration Lab
 
 === Migrating Applications from OCP/OCS 3 to OCP/OCS 4
@@ -22,3 +27,9 @@ link:./6.adoc[Lab 6 - Migrate Sock-Shop Application] +
 link:./7.adoc[Lab 7 - Debugging Failed Migrations] +
 link:./8.adoc[Lab 8 - Migration at Scale via API] +
 link:./9.adoc[Lab 9 - Wrap Up]
+
+=== GUID
+
+* GUID is {USER_GUID}
+
+
