@@ -1,6 +1,7 @@
 ---
 modules:
-  README:
+  CAM-LAB:
     name: OpenShift Application Migration Lab
-  1:
-    name: Prerequisites and Setup
+    exit_sign: Introduction 
+  Intro:
+    name: Introduction 

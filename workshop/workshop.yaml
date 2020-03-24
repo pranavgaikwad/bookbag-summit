@@ -2,5 +2,5 @@
 name: OpenShift Application Migration Lab 
 modules:
   activate:
-    - README
-    - 1 
+    - CAM-LAB 
+    - Intro 
