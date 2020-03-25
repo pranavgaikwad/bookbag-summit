@@ -16,18 +16,14 @@ In this instructor-led, hands-on lab, you’ll experience:
 * Migrating applications from Red Hat OpenShift 3 clusters to Red Hat OpenShift 4 clusters using the Cluster Application Migration Tool (CAM) provided by OpenShift Container Platform 4.3.
 * Use cases that migrate applications preserving state, including how to migrate OpenShift Container Storage 3 (Gluster) to OpenShift Container Storage 4 (Ceph).
 
-=== Labs
+=== Modules
 
-link:./1.adoc[Lab 1 - Introduction] +
-link:./2.adoc[Lab 2 - Prerequisites and Setup] +
-link:./3.adoc[Lab 3 - CAM Overview] +
-link:./4.adoc[Lab 4 - Migrate File-Uploader Application] +
-link:./5.adoc[Lab 5 - Migrate MSSQL Server Application] +
-link:./6.adoc[Lab 6 - Migrate Sock-Shop Application] +
-link:./7.adoc[Lab 7 - Debugging Failed Migrations] +
-link:./8.adoc[Lab 8 - Migration at Scale via API] +
-link:./9.adoc[Lab 9 - Wrap Up]
-
-=== GUID
-
-* GUID is {USER_GUID}
+link:./Intro.adoc[Module 1 - Introduction] +
+link:./Environment.adoc[Module 2 - Prerequisites and Setup] +
+link:./Overview.adoc[Module 3 - CAM Overview] +
+link:./exercises/Ex1.adoc[Module 4 - Migration Exercise (Migrate File-Uploader Application)] +
+link:./exercises/Ex2.adoc[Module 5 - Migration Exercise (Migrate MSSQL Server Application)] +
+link:./exercises/Ex3.adoc[Module 6 - Migration Exercise (Migrate Sock-Shop Application)] +
+link:./exercises/Ex4.adoc[Module 7 - Migration Exercise (Migration at Scale via API)] +
+link:./Debug.adoc[Module 8 - Debugging Failed Migrations] +
+link:./Conclusion.adoc[Module 9 - Conclusion]
