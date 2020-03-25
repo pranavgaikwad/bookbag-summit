@@ -11,18 +11,18 @@ modules:
     exit_sign: 4.0 CAM Overview
   CAM:
     name: 4.0 CAM Overview
-    exit_sign: 5.0 Migration Exercise I
+    exit_sign: 5.0 Exercise I
   Ex1:
-    name: 5.0 Migration Exercise I
-    exit_sign: 6.0 Migration Exercise II
+    name: 5.0 Exercise I
+    exit_sign: 6.0 Exercise II
   Ex2:
-    name: 6.0 Migration Exercise II
-    exit_sign: 7.0 Migration Exercise III
+    name: 6.0 Exercise II
+    exit_sign: 7.0 Exercise III
   Ex3:
-    name: 7.0 Migration Exercise III
-    exit_sign: 8.0 Migration Exercise IV
+    name: 7.0 Exercise III
+    exit_sign: 8.0 Exercise IV
   Ex4:
-    name: 8.0 Migration Exercise IV
+    name: 8.0 Exercise IV
     exit_sign: 9.0 Debugging
   Debug:
     name: 9.0 Debugging
