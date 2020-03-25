@@ -18,8 +18,8 @@ In this instructor-led, hands-on lab, you’ll experience:
 
 === Modules
 
-link:./Intro.adoc[Module 1 - Introduction] +
-link:./Environment.adoc[Module 2 - Prerequisites and Setup] +
+link:/Workshop/Intro[Module 1 - Introduction] +
+link:/Workshop/Environment[Module 2 - Prerequisites and Setup] +
 link:./Overview.adoc[Module 3 - CAM Overview] +
 link:./exercises/Ex1.adoc[Module 4 - Migration Exercise (Migrate File-Uploader Application)] +
 link:./exercises/Ex2.adoc[Module 5 - Migration Exercise (Migrate MSSQL Server Application)] +
