@@ -18,12 +18,12 @@ In this instructor-led, hands-on lab, you’ll experience:
 
 === Modules
 
-link:/Workshop/Intro[Module 1 - Introduction] +
-link:/Workshop/Environment[Module 2 - Prerequisites and Setup] +
-link:./Overview.adoc[Module 3 - CAM Overview] +
-link:./exercises/Ex1.adoc[Module 4 - Migration Exercise (Migrate File-Uploader Application)] +
-link:./exercises/Ex2.adoc[Module 5 - Migration Exercise (Migrate MSSQL Server Application)] +
-link:./exercises/Ex3.adoc[Module 6 - Migration Exercise (Migrate Sock-Shop Application)] +
-link:./exercises/Ex4.adoc[Module 7 - Migration Exercise (Migration at Scale via API)] +
-link:./Debug.adoc[Module 8 - Debugging Failed Migrations] +
-link:./Conclusion.adoc[Module 9 - Conclusion]
+link:/workshop/Intro[Module 1 - Introduction] +
+link:/workshop/Environment[Module 2 - Prerequisites and Setup] +
+link:/workshop/Overview[Module 3 - CAM Overview] +
+link:/workshop/exercises/Ex1[Module 4 - Migration Exercise (Migrate File-Uploader Application)] +
+link:/workshop/exercises/Ex2[Module 5 - Migration Exercise (Migrate MSSQL Server Application)] +
+link:/workshop/exercises/Ex3[Module 6 - Migration Exercise (Migrate Sock-Shop Application)] +
+link:/workshop/exercises/Ex4[Module 7 - Migration Exercise (Migration at Scale via API)] +
+link:/workshop/Debug[Module 8 - Debugging Failed Migrations] +
+link:/workshop/Conclusion[Module 9 - Conclusion]
