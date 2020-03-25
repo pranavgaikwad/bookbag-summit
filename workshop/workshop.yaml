@@ -5,10 +5,10 @@ modules:
     - Intro
     - Environment
     - Prereqs
-    - CAM
-    - Ex1
-    - Ex2
-    - Ex3
-    - Ex4
+    - Overview
+    - exercises/Ex1
+    - exercises/Ex2
+    - exercises/Ex3
+    - exercises/Ex4
     - Debug
     - Conclusion

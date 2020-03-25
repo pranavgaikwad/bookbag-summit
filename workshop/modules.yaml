@@ -9,7 +9,7 @@ modules:
   Prereqs:
     name: 3.0 Prerequisites
     exit_sign: 4.0 CAM Overview
-  CAM:
+  Overview:
     name: 4.0 CAM Overview
     exit_sign: 5.0 Migration Exercise I
   exercises/Ex1:
