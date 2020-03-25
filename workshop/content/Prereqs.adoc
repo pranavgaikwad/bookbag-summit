@@ -1,4 +1,3 @@
-== 2.0 Prerequisites & Setup
 
 Required versions of products used:
 
@@ -22,7 +21,10 @@ Additionally, temporary object storage will be required perform a migration. For
 
 As we will be interacting with both the source and destination cluster throughout the course of this lab, let’s go ahead and open two terminal windows.
 
-The first terminal window will be used for the source 3.11 cluster. In that window, let’s login using the provided coordinates and credentials:
+The first terminal window will be used for the source 3.11 cluster. In that window, let's
+
+
+let’s login using the provided coordinates and credentials:
 
 [subs=+quotes]
 --------------------------------------------------------------------------------
