@@ -85,7 +85,7 @@ Let’s bring up the webUI in preparation for our first Application Migration in
 [source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get routes migration -n openshift-migration -o jsonpath='{.spec.host}'**
-migration-openshift-migration.apps.cluster-d7fd.d7fd.example.opentlc.com\
+migration-openshift-migration.apps.cluster-{OCP4_GUID}.{OCP4_GUID}.{OCP4_DOMAIN}
 --------------------------------------------------------------------------------
 
 Next, open a browser to: +
