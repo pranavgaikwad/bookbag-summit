@@ -1,3 +1,11 @@
+:OCP3_GUID: %OCP3_GUID%
+:OCP3_DOMAIN: %OCP3_DOMAIN%
+:OCP3_SSH_USER: %OCP3_SSH_USER%
+:OCP3_PASSWORD: %OCP3_PASSWORD%
+:OCP4_GUID: %OCP4_GUID%
+:OCP4_DOMAIN: %OCP4_DOMAIN%
+:OCP4_SSH_USER: %OCP4_SSH_USER%
+:OCP4_PASSWORD: %OCP4_PASSWORD%
 
 Required versions of products used:
 
@@ -8,27 +16,33 @@ Required versions of products used:
 |OpenShift 4.x |v4.1+
 |===
 
-Additionally, temporary object storage will be required perform a migration. For example, this can be provided through: https://aws.amazon.com/s3/[AWS S3], https://www.noobaa.io/[Noobaa], https://min.io/[Minio], or others.
+Additionally, temporary object storage will be required perform a migration. For +
+example, this can be provided through: https://aws.amazon.com/s3/[AWS S3], +
+https://www.noobaa.io/[Noobaa], https://min.io/[Minio], or others.
 
-=== 2.1 Base requirements
+=== Base requirements
 
 * A computer with access to the Internet :-)
 * SSH client
 * Firefox 17 or higher, or Chromium / Chrome
 * oc client
 
-=== 2.2 Accessing 3.11 and 4.3 clusters
+=== Accessing 3.11 and 4.3 clusters
 
-As we will be interacting with both the source and destination cluster throughout the course of this lab, let’s go ahead and open two terminal windows.
+As we will be interacting with both the source and destination cluster throughout +
+the course of this lab, let’s go ahead and open two terminal windows.
 
-The first terminal window will be used for the source 3.11 cluster. In that window, let's
-
-
-let’s login using the provided coordinates and credentials:
+The first terminal window will be used for the source 3.11 cluster. In that window, +
+let's go ahead and ssh into the bastion host, and then login into the OCP3.11 cluster:
 
 [subs=+quotes]
 --------------------------------------------------------------------------------
-$ **oc login https://master.GUID.open.redhat.com -u admin -p r3dh4t1!**
+$ **ssh {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}
+{OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}'s password:
+Last login: Sun Mar 22 21:22:55 2020 from 66.26.68.90
+[{OCP3_SSH_USER}@bastion 0 ~]$
+
+$ **oc login https://master.{OCP3_GUID}.{OCP3_DOMAIN} -u admin -p {OCP3_PASSWORD}**
 The server uses a certificate signed by an unknown authority.
 You can bypass the certificate check, but any data you send to the server could be intercepted by others.
 Use insecure connections? (y/n): y
@@ -36,11 +50,17 @@ Use insecure connections? (y/n): y
 Login successful.
 --------------------------------------------------------------------------------
 
-The second terminal window will be used for the destination 4.3 cluster. In that window, let’s login using the provided coordinates and credentials:
+The second terminal window will be used for the destination 4.3 cluster. In that window, +
+let's go ahead and ssh into the bastion host, and then login into the OCP4.3 cluster:
 
 [subs=+quotes]
 --------------------------------------------------------------------------------
-$ **oc login https://api.cluster-GUID.GUID.example.opentlc.com:6443 -u admin -p r3dh4t1!**
+$ **ssh {OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}
+{OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}'s password:
+Last login: Sun Mar 22 21:22:55 2020 from 66.26.68.90
+[{OCP4_SSH_USER}@bastion 0 ~]$
+
+$ **oc login https://master.{OCP4_GUID}.{OCP4_DOMAIN} -u admin -p {OCP4_PASSWORD}**
 The server uses a certificate signed by an unknown authority.
 You can bypass the certificate check, but any data you send to the server could be intercepted by others.
 Use insecure connections? (y/n): y
@@ -48,23 +68,15 @@ Use insecure connections? (y/n): y
 Login successful.
 --------------------------------------------------------------------------------
 
-=== 2.3 Accessing the Bastion Host
+=== Verifications
 
-In Lab 8, you will need to access the bastion host for the 3.11 cluster. Use the provided hostname, and login credentials. For example:
-
-[subs=+quotes]
---------------------------------------------------------------------------------
-$ **ssh labuser@bastion.GUID.open.redhat.com**
---------------------------------------------------------------------------------
-
-=== 2.4 Verifications
-
-==== 2.4.1 Verify 3.11 environment
+==== Verify 3.11 environment
 
 In the source 3.11 cluster terminal, perform the following:
 
 [arabic]
-. Verify that the `migration-operator` deployment is running in `openshift-migration` namespace and healthy
+. Verify that the `migration-operator` deployment is running in `openshift-migration` +
+namespace and healthy.
 
 [subs=+quotes]
 --------------------------------------------------------------------------------
@@ -74,7 +86,7 @@ migration-operator   1         1         1            1           5m
 --------------------------------------------------------------------------------
 
 [arabic, start=2]
-. Verify that `velero` is now running on the source in the `mig` namespace
+. Verify that `velero` is now running on the source in the `mig` namespace.
 
 [subs=+quotes]
 --------------------------------------------------------------------------------
@@ -82,12 +94,13 @@ $ **oc get pods -n openshift-migration | grep velero**
 velero-7559946c5c-mh5sp               1/1     Running   0          2m
 --------------------------------------------------------------------------------
 
-==== 2.4.2 Verify 4.3 environment
+==== Verify 4.3 environment
 
 In the destination 4.3 cluster terminal, perform the following:
 
 [arabic]
-. Verify that you see the below pods now running in `openshift-migration` namespace, we are looking for pods of `controller-manager`, `velero`, `migration-ui`, and `restic`.
+. Verify that you see the below pods now running in `openshift-migration` namespace, +
+we are looking for pods of `controller-manager`, `velero`, `migration-ui`, and `restic`.
 
 [subs=+quotes]
 --------------------------------------------------------------------------------
@@ -102,7 +115,7 @@ restic-dlv7n                            1/1     Running   0          5m11s
 velero-5bffbd77c4-xcbns                 1/1     Running   0          5m11s
 --------------------------------------------------------------------------------
 
-=== 2.5 Prepare to use CAM UI from OCP 4.3 Cluster in your Browser
+=== Prepare to use CAM UI from OCP 4.3 Cluster in your Browser
 
 [arabic]
 . To visit the ui, obtain the route from the OCP 4.3 Cluster
@@ -118,7 +131,7 @@ migration-openshift-migration.apps.cluster-d7fd.d7fd.example.opentlc.com
 
 * https://migration-openshift-migration.apps.cluster-d7fd.d7fd.example.opentlc.com
 
-==== 2.5.1 Accept API Certificates on Source and Destination Clusters
+==== Accept API Certificates on Source and Destination Clusters
 
 [arabic]
 . Before you can login you will need to accept the certificates with your browser on both the source and destination cluster. To do this:
@@ -135,15 +148,17 @@ migration-openshift-migration.apps.cluster-d7fd.d7fd.example.opentlc.com
 . Login with your credentials for the cluster.
 
 * Username: admin
-* Password: `r3dh4t1!`
+* Password: `{OCP4_PASSWORD}`
 
 image:screenshots/lab2/camUI.png[CAM UI]
 
-=== 2.6 Object Storage Setup
+=== Object Storage Setup
 
-CAM leverages object storage as temporary scratch space when performing migrations. This storage can be any object storage that presents an `S3 like` interface.
+CAM leverages object storage as temporary scratch space when performing migrations. +
+This storage can be any object storage that presents an `S3 like` interface.
 
-For purposes of this lab, we have already deployed OCS MCG (Noobaa) on the 4.3 cluster, created a bucket, and configured it for use with CAM.
+For purposes of this lab, we have already deployed OCS MCG (Noobaa) on the 4.3 cluster, +
+created a bucket, and configured it for use with CAM.
 
 [arabic]
 . You can see this by clicking the `View replication repository` link from the CAM UI dashboard.
@@ -176,7 +191,3 @@ noobaa-mgmt-openshift-storage.apps.cluster-d7fd.d7fd.example.opentlc.com
 image:screenshots/lab2/noobaa-mgmt.png[Noobaa Mgmt]
 
 Let’s now take a closer look at the Cluster Application Migration Tool (CAM).
-
-Next Lab: link:./3.adoc[Lab 3 - CAM Overview] +
-Previous Lab: link:./1.adoc[Lab 1 - Introduction] +
-link:./README.adoc[Home]
