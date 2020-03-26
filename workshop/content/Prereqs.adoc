@@ -33,9 +33,11 @@ As we will be interacting with both the source and destination cluster throughou
 The first terminal window will be used for the source 3.11 cluster. In that window, +
 let's go ahead and ssh into the bastion host, and then login into the OCP3.11 cluster:
 
+{OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}
+
 [subs=+quotes]
 --------------------------------------------------------------------------------
-$ **ssh \{OCP3_SSH_USER\}@bastion.\{OCP3_GUID\}.\{OCP3_DOMAIN\}**
+$ **ssh {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}**
 {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}'s password:
 Last login: Sun Mar 22 21:22:55 2020 from 66.26.68.90
 [{OCP3_SSH_USER}@bastion 0 ~]$
