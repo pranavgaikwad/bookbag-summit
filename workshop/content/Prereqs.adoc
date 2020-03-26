@@ -51,12 +51,12 @@ The second terminal window will be used for the destination 4.3 cluster. In that
 
 [source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
-$ **ssh {OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}
+$ **ssh {OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}**
 {OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}'s password:
 Last login: Sun Mar 22 21:22:55 2020 from 66.26.68.90
 [{OCP4_SSH_USER}@bastion 0 ~]$
 
-$ **oc login https://master.{OCP4_GUID}.{OCP4_DOMAIN} -u admin -p {OCP4_PASSWORD}**
+$ **oc login https://api.cluster-{OCP4_GUID}.{OCP4_GUID}.{OCP4_DOMAIN}:6443 -u admin -p {OCP4_PASSWORD}**
 The server uses a certificate signed by an unknown authority.
 You can bypass the certificate check, but any data you send to the server could be intercepted by others.
 Use insecure connections? (y/n): y
