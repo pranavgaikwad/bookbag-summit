@@ -16,8 +16,7 @@ Required versions of products used:
 |OpenShift 4.x |v4.1+
 |===
 
-Additionally, temporary object storage will be required perform a migration. For +
-example, this can be provided through: https://aws.amazon.com/s3/[AWS S3], +
+Additionally, temporary object storage will be required perform a migration. For example, this can be provided through: https://aws.amazon.com/s3/[AWS S3], +
 https://www.noobaa.io/[Noobaa], https://min.io/[Minio], or others.
 
 === Base requirements
@@ -29,15 +28,14 @@ https://www.noobaa.io/[Noobaa], https://min.io/[Minio], or others.
 
 === Accessing 3.11 and 4.3 clusters
 
-As we will be interacting with both the source and destination cluster throughout +
-the course of this lab, let’s go ahead and open two terminal windows.
+As we will be interacting with both the source and destination cluster throughout the course of this lab, let’s go ahead and open two terminal windows.
 
 The first terminal window will be used for the source 3.11 cluster. In that window, +
 let's go ahead and ssh into the bastion host, and then login into the OCP3.11 cluster:
 
 [subs=+quotes]
 --------------------------------------------------------------------------------
-$ **ssh {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}
+$ **ssh {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}**
 {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}'s password:
 Last login: Sun Mar 22 21:22:55 2020 from 66.26.68.90
 [{OCP3_SSH_USER}@bastion 0 ~]$
