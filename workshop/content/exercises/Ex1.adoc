@@ -80,7 +80,7 @@ IMPORTANT: Remember our goal is to migrate our application from OCP/OCS 3 to OCP
 
 First thing we want to do is add the source OCP cluster we wish to migrate the application from. Click `Add` on the Clusters section:
 
-image:./screenshots/lab4/cam-add-cluster.png[CAM Add Cluster]
+image:../screenshots/lab4/cam-add-cluster.png[CAM Add Cluster]
 
 Fill out the necessary information. We will need an Service Account Token in order for destination cluster to talk to source cluster:
 
@@ -134,7 +134,7 @@ image:../screenshots/lab4/cam-mig-plan-added.png[CAM Mig Plan Added]
 
 Optionally choose to _not_ terminate the application on the source cluster. Leave it unchecked and select `Migrate`.
 
-image:./screenshots/lab4/cam-quiesce.png[CAM Quiesce]
+image:../screenshots/lab4/cam-quiesce.png[CAM Quiesce]
 
 The migration will progress with a progress bar showing each step in the process.
 

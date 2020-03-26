@@ -1,4 +1,3 @@
-== 9.0 Wrap Up
 
 *Congratulations* and *Thank You* for participating in the OpenShift Application Migration Lab. We hope you have found it to be both informative and thorough. By now you have completed the following activities:
 
@@ -20,6 +19,3 @@ We’ve included a couple of additional applications in the 3.11 cluster deploym
 |Source Code |https://github.com/konveyor/mig-demo-apps
 |YouTube Channel |https://www.youtube.com/channel/UCBDU5UK5Okg3mlIMygpkbNA?view_as=subscriber
 |===
-
-Previous Lab: link:./8.adoc[Lab 8 - Migration at Scale via API (optional)] +
-link:./README.adoc[Home]

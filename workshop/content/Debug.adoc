@@ -1,4 +1,14 @@
-== 7.0 Debugging Failed Migrations
+:markup-in-source: verbatim,attributes,quotes
+:OCP3_GUID: %OCP3_GUID%
+:OCP3_DOMAIN: %OCP3_DOMAIN%
+:OCP3_SSH_USER: %OCP3_SSH_USER%
+:OCP3_PASSWORD: %OCP3_PASSWORD%
+:OCP4_GUID: %OCP4_GUID%
+:OCP4_DOMAIN: %OCP4_DOMAIN%
+:OCP4_SSH_USER: %OCP4_SSH_USER%
+:OCP4_PASSWORD: %OCP4_PASSWORD%
+
+== Debugging Failed Migrations
 
 Most of the time migrations go as planned, but knowing what to do when they don’t is critical. This lab attempts to provide you with a process/guide to follow when investigating a failed migration.
 
@@ -16,7 +26,7 @@ Upon execution of a Migration Plan (stage or migrate), a `MigMigration` is creat
 
 Let’s take a look at the existing MigMigrations. On our 4.1 cluster, perform the following:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get migmigration -n openshift-migration**
 NAME                                   AGE
@@ -25,7 +35,7 @@ NAME                                   AGE
 
 Once you found the appropriate migration execution that you want to investigate, you can request more detail:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc describe migmigration 88435fe0-c9f8-11e9-85e6-5d593ce65e10 -n openshift-migration**
 Name:         88435fe0-c9f8-11e9-85e6-5d593ce65e10
@@ -64,7 +74,7 @@ This `MigMigration` describes a successful execution of the socks-shop-mig-plan.
 
 The mig-controller will orchestrate actions on both the source and target clusters. These actions are as follows:
 
-==== 7.1.1 Source Cluster
+==== Source Cluster
 
 Two Velero Backup CRs are created:
 
@@ -89,7 +99,7 @@ Two Velero Backup CRs are created:
 
 *_Note: Velero will sync these Backup CRs between source and target clusters, so they will appear on both clusters._*
 
-==== 7.1.2 Target Cluster
+==== Target Cluster
 
 Two Velero Restore CRs are created:
 
@@ -105,15 +115,15 @@ Two Velero Restore CRs are created:
 [arabic]
 . (Uses Backup #1) – Restore the k8s resources to the destination cluster.
 
-=== 7.2 Examining Velero Custom Resources
+=== Examining Velero Custom Resources
 
 Let’s take a look at these Velero CRs on our 4.1 Cluster:
 
-==== 7.2.1 Backup
+==== Backup
 
 The Velero CRs will contain references to the associated MigMigration. We can use the UID of the MigMigration, under Metadata, to query the relevant objects:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get backup -n openshift-migration -l migmigration=8886de4c-c9f8-11e9-95ad-0205fe66cbb6**
 NAME                                         AGE
@@ -121,7 +131,7 @@ NAME                                         AGE
 88435fe0-c9f8-11e9-85e6-5d593ce65e10-vdjb7   37m  //Backup 1
 --------------------------------------------------------------------------------
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get backup 88435fe0-c9f8-11e9-85e6-5d593ce65e10-59gb7  -n openshift-migration -o yaml**
 apiVersion: velero.io/v1
@@ -182,9 +192,9 @@ status:
   warnings: 0
 --------------------------------------------------------------------------------
 
-==== 7.2.2 Restore
+==== Restore
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get restore -n openshift-migration -l migmigration=8886de4c-c9f8-11e9-95ad-0205fe66cbb6**
 NAME                                         AGE
@@ -192,7 +202,7 @@ e13a1b60-c927-11e9-9555-d129df7f3b96-gb8nx   15m //Restore 2
 e13a1b60-c927-11e9-9555-d129df7f3b96-qnqdt   15m //Restore 1
 --------------------------------------------------------------------------------
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get restore e13a1b60-c927-11e9-9555-d129df7f3b96-gb8nx  -n openshift-migration -o yaml**
 apiVersion: velero.io/v1
@@ -237,51 +247,45 @@ status:
   warnings: 15
 --------------------------------------------------------------------------------
 
-=== 7.3 Controller Logs
+=== Controller Logs
 
 Another area we can examine to assist in debugging migration issues is the controller logs.
 
-==== 7.3.1 Migration Controller Logs
+==== Migration Controller Logs
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pods -n openshift-migration | grep controller**
 controller-manager-78c469849c-v6wcf           1/1     Running     0          4h49m
 --------------------------------------------------------------------------------
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc logs controller-manager-78c469849c-v6wcf -f -n mig**
 --------------------------------------------------------------------------------
 
-==== 7.3.2 Velero Controller Logs
+==== Velero Controller Logs
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pods -n openshift-migration | grep velero**
 velero-7659c69dd7-ctb5x                       1/1     Running     0          4h46m
 --------------------------------------------------------------------------------
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc logs velero-7659c69dd7-ctb5x -f -n mig**
 --------------------------------------------------------------------------------
 
-==== 7.3.3 Restic Controller Logs
+==== Restic Controller Logs
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pods -n openshift-migration | grep restic**
 restic-t4f9b                                  1/1     Running     0          4h47m
 --------------------------------------------------------------------------------
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc logs restic-t4f9b -f -n openshift-migration**
 --------------------------------------------------------------------------------
-
-Next, we’ve added an optional lab covering multi-namespace migrations and using the API directly for large scale operations.
-
-Next Lab: link:./8.adoc[Lab 8 - Migration at Scale via API (optional)] +
-Previous Lab: link:./6.adoc[Lab 6 - Migrate Sock Shop Application] +
-link:./README.adoc[Home]

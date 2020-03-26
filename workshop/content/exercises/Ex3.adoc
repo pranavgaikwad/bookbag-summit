@@ -1,12 +1,22 @@
-== 6.0 Migrate Sock-Shop Application
+:markup-in-source: verbatim,attributes,quotes
+:OCP3_GUID: %OCP3_GUID%
+:OCP3_DOMAIN: %OCP3_DOMAIN%
+:OCP3_SSH_USER: %OCP3_SSH_USER%
+:OCP3_PASSWORD: %OCP3_PASSWORD%
+:OCP4_GUID: %OCP4_GUID%
+:OCP4_DOMAIN: %OCP4_DOMAIN%
+:OCP4_SSH_USER: %OCP4_SSH_USER%
+:OCP4_PASSWORD: %OCP4_PASSWORD%
+
+== Migrate Sock-Shop Application
 
 ACME Corporation is in the process of upgrading the production environment of their online socks store from OCP 3 to OCP 4. The application consists of various micro-services, and uses a shared NFS cluster for storage. ACME has already installed the 4.3 cluster, and you have been asked to migrate the Socks-Shop application from their 3.11 environment.
 
 The application and all of it’s resources are contained within the `sock-shop` namespace.
 
-image:./screenshots/lab6/sock-shop-main.png[SS Main]
+image:../screenshots/lab6/sock-shop-main.png[SS Main]
 
-image:./screenshots/lab6/sock-shop-arch.png[SS Main]
+image:../screenshots/lab6/sock-shop-arch.png[SS Main]
 
 Rather than provide a step-by-step walkthrough as we have in the previous two labs, you’ll be on your own for this round.
 
@@ -19,6 +29,4 @@ The high-level steps are as follows:
 . Execute a `Migration` of the Plan.
 . Verify the application is functioning on the destination cluster.
 
-Next Lab: link:./7.adoc[Lab 7 - Debugging Failed Migrations] +
-Previous Lab: link:./5.adoc[Lab 5 - Migrate MSSQL Server Application] +
-link:./README.adoc[Home]
+Next, we’ve added a lab covering multi-namespace migrations and using the API directly for large scale operations.

@@ -1,10 +1,20 @@
-== 5.0 Migrate MSSQL Application
+:markup-in-source: verbatim,attributes,quotes
+:OCP3_GUID: %OCP3_GUID%
+:OCP3_DOMAIN: %OCP3_DOMAIN%
+:OCP3_SSH_USER: %OCP3_SSH_USER%
+:OCP3_PASSWORD: %OCP3_PASSWORD%
+:OCP4_GUID: %OCP4_GUID%
+:OCP4_DOMAIN: %OCP4_DOMAIN%
+:OCP4_SSH_USER: %OCP4_SSH_USER%
+:OCP4_PASSWORD: %OCP4_PASSWORD%
+
+== Migrate MSSQL Application
 
 Next, we are going to migrate a simple Product Inventory web-based application front-end, backed backed by Microsoft SQL Server. This application has been pre-deployed on your 3.11 cluster in the mssql-persistent namespace, using a single PV backed by NFS for persistent storage.
 
 In our source 3.11 cluster terminal, we can see the app running:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pods -n mssql-persistent**
 NAME                                    READY   STATUS    RESTARTS   AGE
@@ -14,80 +24,80 @@ mssql-deployment-1-xq4p4                1/1     Running   0          41m
 
 Let’s get the route to the application, and bring up the webUI.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $  **oc get route -n mssql-persistent**
 NAME              HOST/PORT                                                       PATH   SERVICES     PORT   TERMINATION   WILDCARD
 mssql-app-route   mssql-app-route-mssql-persistent.apps.cd76.events.opentlc.com          db-app-svc   5000                 None
 --------------------------------------------------------------------------------
 
-image:./screenshots/lab5/mssql-product-catalog.png[MSSQL Product Catalog]
+image:../screenshots/lab5/mssql-product-catalog.png[MSSQL Product Catalog]
 
 Let’s go ahead and add a new product to the inventory. Click on the +Add button and enter some data.
 
-image:./screenshots/lab5/mssql-add-product.png[MSSQL Add Product]
+image:../screenshots/lab5/mssql-add-product.png[MSSQL Add Product]
 
 You can see the application is functioning and state is being saved in the DB.
 
-image:./screenshots/lab5/mssql-added-product.png[MSSQL Added Product]
+image:../screenshots/lab5/mssql-added-product.png[MSSQL Added Product]
 
 Let’s also verify that the application is NOT installed on our 4.3 destination cluster. You can see that no pods are running; and in fact the mssql-persistent namespace does _not_ exist.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pods -n mssql-persistent**
 No resources found.
 --------------------------------------------------------------------------------
 
-=== 5.1 Using CAM
+=== Using CAM
 
 Let’s go ahead and define our Migration Plan in the CAM UI.
 
-==== 5.1.1 Create a Migration Plan
+==== Create a Migration Plan
 
-image:./screenshots/lab5/cam-mig-plan-1.png[CAM Mig Plan 1]
+image:../screenshots/lab5/cam-mig-plan-1.png[CAM Mig Plan 1]
 
 Fill out a plan name. Click Next.
 
-image:./screenshots/lab5/cam-mig-plan-2.png[CAM Mig Plan 2]
+image:../screenshots/lab5/cam-mig-plan-2.png[CAM Mig Plan 2]
 
 Select the source and target cluster, the replication repository, and the `mssql-persistent` namespace (which we want to migrate over). Click Next.
 
-image:./screenshots/lab5/cam-mig-plan-3.png[CAM Mig Plan 3]
+image:../screenshots/lab5/cam-mig-plan-3.png[CAM Mig Plan 3]
 
 Now we are displayed a list of persistent volumes associated with our application workload. Select which type of action you would like to perform on the PV. For this example, let’s select `copy`. Click Next.
 
-image:./screenshots/lab5/cam-mig-plan-4.png[CAM Mig Plan 4]
+image:../screenshots/lab5/cam-mig-plan-4.png[CAM Mig Plan 4]
 
 Select the storage class for your PVs. In this case we will be copying our data from NFS to AWS-EBS (`gp2:kubernetes.io/aws-ebs`). Click Next.
 
-image:./screenshots/lab5/cam-mig-plan-5.png[CAM Mig Plan 5]
+image:../screenshots/lab5/cam-mig-plan-5.png[CAM Mig Plan 5]
 
 After validating the migration plan, you will see a `Ready` message and you can click `Close`.
 
-==== 5.1.2 Migrate the Application Workload
+==== Migrate the Application Workload
 
 Now we can select `Migrate` or `Stage` on the application. Since we don’t care about downtime for this example, let’s select `Migrate`:
 
-image:./screenshots/lab5/cam-mig-plan-added.png[CAM Mig Plan Added]
+image:../screenshots/lab5/cam-mig-plan-added.png[CAM Mig Plan Added]
 
 Optionally choose to _not_ terminate the application on the source cluster. Leave it unchecked and select `Migrate`.
 
-image:./screenshots/lab5/cam-quiesce.png[CAM Quiesce]
+image:../screenshots/lab5/cam-quiesce.png[CAM Quiesce]
 
 The migration will progress with a progress bar showing each step in the process.
 
-image:./screenshots/lab5/cam-progress-bar.png[CAM Progress Bar]
+image:../screenshots/lab5/cam-progress-bar.png[CAM Progress Bar]
 
 Once done, you should see `Migration Succeeded` on the migration plan.
 
-image:./screenshots/lab5/cam-migration-complete.png[CAM Migration Complete]
+image:../screenshots/lab5/cam-migration-complete.png[CAM Migration Complete]
 
-=== 5.2 Verify Migrated Application
+=== Verify Migrated Application
 
 In the destination 4.3 cluster terminal, let’s execute the following commands:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pods -n mssql-persistent**
 NAME                                    READY   STATUS      RESTARTS   AGE
@@ -100,7 +110,7 @@ We see that the mssql-persistent application is running.
 
 Let’s check the storage:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pvc -n mssql-persistent**
 NAME        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -111,15 +121,11 @@ We see that our 10GB volume has been moved and is now running in AWS EBS.
 
 Lastly, let’s grab the route and open up the WebUI in our browser, and verify that the product we added prior to migration still exists.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get routes -n mssql-persistent**
 NAME              HOST/PORT                                                    PATH   SERVICES            PORT    TERMINATION   WILDCARD
 mssql-app-route   mssql-app-route-mssql-persistent.apps.034f.open.redhat.com   /      mssql-app-service   <all>                 None
 --------------------------------------------------------------------------------
 
-image:./screenshots/lab5/mssql-persistent-app-ocp4.png[app]
-
-Next Lab: link:./6.adoc[Lab 6 - Migrate Sock Shop Application] +
-Previous Lab: link:./4.adoc[Lab 4 - CAM Overview] +
-link:./README.adoc[Home]
+image:../screenshots/lab5/mssql-persistent-app-ocp4.png[app]

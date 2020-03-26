@@ -1,34 +1,39 @@
-== 8.0 Migration at Scale via API (optional)
+:markup-in-source: verbatim,attributes,quotes
+:OCP3_GUID: %OCP3_GUID%
+:OCP3_DOMAIN: %OCP3_DOMAIN%
+:OCP3_SSH_USER: %OCP3_SSH_USER%
+:OCP3_PASSWORD: %OCP3_PASSWORD%
+:OCP4_GUID: %OCP4_GUID%
+:OCP4_DOMAIN: %OCP4_DOMAIN%
+:OCP4_SSH_USER: %OCP4_SSH_USER%
+:OCP4_PASSWORD: %OCP4_PASSWORD%
+
+== Migration at Scale via API (optional)
 
 In this section, we will be looking at migrating multiple namespaces in a single Migration Plan. In these types of large scale migrations, sometimes using the WebUI can be less than ideal. With that, we are also going to use the API directly for creating and executing our migration.
 
-=== 8.1 Setup
+=== Setup
 
 Let’s start by seeding our 3.11 cluster with a set of sample stateless applications. We’ve added a set of link:./scripts/lab8/[scripts] to make this simple. These scripts are already available on the 3.11 bastion host for convenience.
 
-==== 8.1.0 Logging into Bastion host
+==== Logging into Bastion host
 
 You should have received the hostname, and login credentials for the 3.11 bastion host. Let’s use those to login to the host to access the lab scripts:
 
-[subs=+quotes]
---------------------------------------------------------------------------------
-**i.e. $ ssh labuser@bastion.GUID.open.redhat.com**
---------------------------------------------------------------------------------
+Access the `scripts` directory
 
-Next, access the `scripts` directory
-
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 **cd scripts/lab8**
 --------------------------------------------------------------------------------
 
-==== 8.1.1 Deploy HelloOpenShift Apps
+==== Deploy HelloOpenShift Apps
 
 The `deploy.sh` script will deploy the HelloOpenShift application to a user specified number of namespaces. For our purposes, let’s choose 5.
 
 *Note:* You will need to be logged into the OCP 3.11 cluster from the bastion host prior to running the scripts.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **./deploy.sh**
 Number of namespaces?
@@ -61,11 +66,11 @@ hello-openshift-hello-openshift-4.apps.db45.events.opentlc.com
 hello-openshift-hello-openshift-5.apps.db45.events.opentlc.com
 --------------------------------------------------------------------------------
 
-==== 8.1.2 Validate applications
+==== Validate applications
 
 We’ve also included a `probe.sh` script that will verify that all deployed applications are responding.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **./probe.sh**
 Probing app in namespace hello-openshift-1
@@ -82,13 +87,13 @@ Hello OpenShift!
 
 Great! We are now ready to assemble our Migration Plan.
 
-=== 8.2 Create Migration Plan
+=== Create Migration Plan
 
 On your OCP 4.3 cluster, since we’ve already performed successful migrations throughout the preceding labs, we already have our MigCluster, Cluster, & MigStorage resources created. This means we are ready to assemble our MigPlan.
 
 In the below yaml, we’ve seeded with the created resources. Copy the below as a starting point into your favorite editor:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 apiVersion: migration.openshift.io/v1alpha1
 kind: MigPlan
@@ -122,7 +127,7 @@ spec:
 
 Save the file as `mig-plan.yaml`
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 # Creates MigPlan 'multi-namespace-migplan' in namespace 'mig'
 $ **oc apply -f mig-plan.yaml**
@@ -131,7 +136,7 @@ migplan.migration.openshift.io/multi-namespace-migplan created
 
 Let’s Describe our MigPlan. Assuming the controller is running, validations should have run against the plan, and you should be able to see a status of *``The migration plan is ready.''* or a list of issues to resolve.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc describe migplan multi-namespace-migplan  -n openshift-migration**
 
@@ -191,11 +196,11 @@ Status:
 Events:                    <none>
 --------------------------------------------------------------------------------
 
-=== 8.3 Execute migration
+=== Execute migration
 
 Let’s now proceed with creating a `MigMigration` that will execute our Migration Plan. Again, in the below yaml, we’ve seeded with the created resources. Copy the below as a starting point into your favorite editor:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 apiVersion: migration.openshift.io/v1alpha1
 kind: MigMigration
@@ -217,7 +222,7 @@ spec:
 
 Set the appropriate values for `stage` and `quiescePods`. In this case, false and true respectively. Save the file as `mig-migration.yaml`.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 # Creates MigMigration 'migmigration-multi-namespace' in namespace 'openshift-migration'
 $ **oc apply -f mig-migration.yaml**
@@ -226,7 +231,7 @@ migmigration.migration.openshift.io/migmigration-multi-namespace created
 
 Monitor progress of the migration with `oc describe`. You should see a status of *``The migration is ready.''*, otherwise you’ll see an error condition within `oc describe` output indicating what action you need to take before the migration can begin.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc describe migmigration -n openshift-migration migmigration-multi-namespace**
 Name:         migmigration-multi-namespace
@@ -263,11 +268,11 @@ Events:                    <none>
 
 Notice how the MigMigration shown above has `Task Phase': Completed. This means that the migration is complete, and we should be able to verify our apps existence on the destination cluster. You can continuously describe the MigMigration to see phase info, or tail the mig-controller logs with `oc logs -f <pod-name>`.
 
-=== 8.4 Verification
+=== erification
 
 Let’s login to our 4.1 cluster from the 3.11 bastion host and run the `probe.sh` script to verify that the applications have been migrated and are running:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **./probe.sh**
 Probing app in namespace hello-openshift-1
@@ -281,7 +286,3 @@ Hello OpenShift!
 Probing app in namespace hello-openshift-5
 Hello OpenShift!
 --------------------------------------------------------------------------------
-
-Next Lab: link:./9.adoc[Lab 9 - Wrap Up] +
-Previous Lab: link:./7.adoc[Lab 7 - Debugging Failed Migrations] +
-link:./README.adoc[Home]
