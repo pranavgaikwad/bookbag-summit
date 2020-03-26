@@ -1,3 +1,4 @@
+:markup-in-source: verbatim,attributes,quotes
 :OCP3_GUID: %OCP3_GUID%
 :OCP3_DOMAIN: %OCP3_DOMAIN%
 :OCP3_SSH_USER: %OCP3_SSH_USER%
@@ -35,7 +36,7 @@ let's go ahead and ssh into the bastion host, and then login into the OCP3.11 cl
 
 {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **ssh {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}**
 {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}'s password:
