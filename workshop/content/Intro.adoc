@@ -25,11 +25,12 @@ OpenShift Container Storage 3 (Gluster) to OpenShift Container Storage 4 (Ceph).
 === Modules
 
 link:/workshop/Intro[Module 1 - Introduction] +
-link:/workshop/Environment[Module 2 - Prerequisites and Setup] +
-link:/workshop/Overview[Module 3 - CAM Overview] +
-link:/workshop/exercises/Ex1[Module 4 - Migration Exercise (Migrate File-Uploader Application)] +
-link:/workshop/exercises/Ex2[Module 5 - Migration Exercise (Migrate MSSQL Server Application)] +
-link:/workshop/exercises/Ex3[Module 6 - Migration Exercise (Migrate Sock-Shop Application)] +
-link:/workshop/exercises/Ex4[Module 7 - Migration Exercise (Migration at Scale via API)] +
-link:/workshop/Debug[Module 8 - Debugging Failed Migrations] +
-link:/workshop/Conclusion[Module 9 - Conclusion]
+link:/workshop/Environment[Module 2 - Environment] +
+link:/workshop/Prereqs[Module 3 - Prerequisites] +
+link:/workshop/Overview[Module 4 - CAM Overview] +
+link:/workshop/exercises/Ex1[Module 5 - Migration Exercise (Migrate File-Uploader Application)] +
+link:/workshop/exercises/Ex2[Module 6 - Migration Exercise (Migrate MSSQL Server Application)] +
+link:/workshop/exercises/Ex3[Module 7 - Migration Exercise (Migrate Sock-Shop Application)] +
+link:/workshop/exercises/Ex4[Module 8 - Migration Exercise (Migration at Scale via API)] +
+link:/workshop/Debug[Module 9 - Debugging Failed Migrations] +
+link:/workshop/Conclusion[Module 10 - Conclusion]
