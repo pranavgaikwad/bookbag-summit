@@ -11,7 +11,7 @@
 
 The following lab environment has been provisioned for you for use with this Lab:
 
-image:screenshots/lab1/lab-env-overview.png[Lab Environment Overview]
+image:screenshots/lab1/labenv-overview.png[Lab Environment Overview]
 
 === OpenShift 3.11 Cluster
 

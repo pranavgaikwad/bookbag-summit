@@ -5,7 +5,7 @@
 
 == OpenShift Application Migration Lab
 
-=== Migrating Applications from OCP/OCS 3 to OCP/OCS 4
+=== Migrating from OCP/OCS 3 to OCP/OCS 4
 
 This guide will provide you with hands-on exposure to the OpenShift Migration +
 Tooling through a series of exercises migrating application workloads (both +
