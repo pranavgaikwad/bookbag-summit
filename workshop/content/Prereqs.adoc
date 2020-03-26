@@ -17,8 +17,7 @@ Required versions of products used:
 |OpenShift 4.x |v4.1+
 |===
 
-Additionally, temporary object storage will be required perform a migration. For example, this can be provided through: https://aws.amazon.com/s3/[AWS S3], +
-https://www.noobaa.io/[Noobaa], https://min.io/[Minio], or others.
+Additionally, temporary object storage will be required perform a migration. For example, this can be provided through: https://aws.amazon.com/s3/[AWS S3], https://www.noobaa.io/[Noobaa], https://min.io/[Minio], or others.
 
 === Base requirements
 
@@ -31,10 +30,7 @@ https://www.noobaa.io/[Noobaa], https://min.io/[Minio], or others.
 
 As we will be interacting with both the source and destination cluster throughout the course of this lab, let’s go ahead and open two terminal windows.
 
-The first terminal window will be used for the source 3.11 cluster. In that window, +
-let's go ahead and ssh into the bastion host, and then login into the OCP3.11 cluster:
-
-{OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}
+The first terminal window will be used for the source 3.11 cluster. In that window, let's go ahead and ssh into the bastion host, and then login into the OCP3.11 cluster:
 
 [source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
@@ -51,10 +47,9 @@ Use insecure connections? (y/n): y
 Login successful.
 --------------------------------------------------------------------------------
 
-The second terminal window will be used for the destination 4.3 cluster. In that window, +
-let's go ahead and ssh into the bastion host, and then login into the OCP4.3 cluster:
+The second terminal window will be used for the destination 4.3 cluster. In that window, let's go ahead and ssh into the bastion host, and then login into the OCP4.3 cluster:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **ssh {OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}
 {OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}'s password:
@@ -76,10 +71,9 @@ Login successful.
 In the source 3.11 cluster terminal, perform the following:
 
 [arabic]
-. Verify that the `migration-operator` deployment is running in `openshift-migration` +
-namespace and healthy.
+. Verify that the `migration-operator` deployment is running in `openshift-migration` namespace and healthy.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get deployment migration-operator -n openshift-migration**
 NAME                 DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
@@ -89,7 +83,7 @@ migration-operator   1         1         1            1           5m
 [arabic, start=2]
 . Verify that `velero` is now running on the source in the `mig` namespace.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pods -n openshift-migration | grep velero**
 velero-7559946c5c-mh5sp               1/1     Running   0          2m
@@ -100,10 +94,9 @@ velero-7559946c5c-mh5sp               1/1     Running   0          2m
 In the destination 4.3 cluster terminal, perform the following:
 
 [arabic]
-. Verify that you see the below pods now running in `openshift-migration` namespace, +
-we are looking for pods of `controller-manager`, `velero`, `migration-ui`, and `restic`.
+. Verify that you see the below pods now running in `openshift-migration` namespace, we are looking for pods of `controller-manager`, `velero`, `migration-ui`, and `restic`.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get pods -n openshift-migration**
 NAME                                    READY   STATUS    RESTARTS   AGE
@@ -121,7 +114,7 @@ velero-5bffbd77c4-xcbns                 1/1     Running   0          5m11s
 [arabic]
 . To visit the ui, obtain the route from the OCP 4.3 Cluster
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get routes migration -n openshift-migration -o jsonpath='{.spec.host}'**
 migration-openshift-migration.apps.cluster-d7fd.d7fd.example.opentlc.com
@@ -155,11 +148,9 @@ image:screenshots/lab2/camUI.png[CAM UI]
 
 === Object Storage Setup
 
-CAM leverages object storage as temporary scratch space when performing migrations. +
-This storage can be any object storage that presents an `S3 like` interface.
+CAM leverages object storage as temporary scratch space when performing migrations. This storage can be any object storage that presents an `S3 like` interface.
 
-For purposes of this lab, we have already deployed OCS MCG (Noobaa) on the 4.3 cluster, +
-created a bucket, and configured it for use with CAM.
+For purposes of this lab, we have already deployed OCS MCG (Noobaa) on the 4.3 cluster, created a bucket, and configured it for use with CAM.
 
 [arabic]
 . You can see this by clicking the `View replication repository` link from the CAM UI dashboard.
@@ -169,7 +160,7 @@ image:screenshots/lab2/cam-replication-repository.png[CAM Replication Repository
 [arabic, start=2]
 . Additionally, you can query the bucket and service route as seen below:
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get ObjectBucketClaim -n openshift-storage**
 NAME         STORAGE-CLASS                 PHASE   AGE
@@ -183,7 +174,7 @@ s3     LoadBalancer   172.30.209.151   ab6e67b04f2fc4ad1bb126ad89db0962-17967254
 [arabic, start=3]
 . You can also access the Noobaa Mgmt console.
 
-[subs=+quotes]
+[source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get routes noobaa-mgmt -n openshift-storage -o jsonpath='{.spec.host}'**
 noobaa-mgmt-openshift-storage.apps.cluster-d7fd.d7fd.example.opentlc.com
