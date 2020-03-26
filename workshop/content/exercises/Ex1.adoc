@@ -16,7 +16,7 @@ _RWX is a ReadWriteMany Access Mode for persistent volumes in which the volume c
 
 This application has been pre-deployed on the your OCP 3.11 cluster. We will be migrating this application to our 4.3 cluster, including the state to OCS4/Ceph.
 
-image:../screenshots/lab4/file-uploader-app.png[File Uploader App]
+image:../screenshots/lab4/file-upload-arch.png[File Uploader App]
 
 In the source 3.11 cluster terminal, let’s examine the application. Execute the following commands:
 
