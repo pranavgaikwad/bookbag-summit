@@ -1,12 +1,12 @@
 :markup-in-source: verbatim,attributes,quotes
-:OCP3_GUID: %OCP3_GUID%
-:OCP3_DOMAIN: %OCP3_DOMAIN%
-:OCP3_SSH_USER: %OCP3_SSH_USER%
-:OCP3_PASSWORD: %OCP3_PASSWORD%
-:OCP4_GUID: %OCP4_GUID%
-:OCP4_DOMAIN: %OCP4_DOMAIN%
-:OCP4_SSH_USER: %OCP4_SSH_USER%
-:OCP4_PASSWORD: %OCP4_PASSWORD%
+:ocp3_guid: %ocp3_guid%
+:ocp3_domain: %ocp3_domain%
+:ocp3_ssh_user: %ocp3_ssh_user%
+:ocp3_password: %ocp3_password%
+:ocp4_guid: %ocp4_guid%
+:ocp4_domain: %ocp4_domain%
+:ocp4_ssh_user: %ocp4_ssh_user%
+:ocp4_password: %ocp4_password%
 
 Required versions of products used:
 
@@ -34,12 +34,12 @@ The first terminal window will be used for the source 3.11 cluster. In that wind
 
 [source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
-$ **ssh {OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}**
-{OCP3_SSH_USER}@bastion.{OCP3_GUID}.{OCP3_DOMAIN}'s password:
+$ **ssh {ocp3_ssh_user}@bastion.{ocp3_guid}.{ocp3_domain}**
+{ocp3_ssh_user}@bastion.{ocp3_guid}.{ocp3_domain}'s password:
 Last login: Sun Mar 22 21:22:55 2020 from 66.26.68.90
-[{OCP3_SSH_USER}@bastion 0 ~]$
+[{ocp3_ssh_user}@bastion 0 ~]$
 
-$ **oc login https://master.{OCP3_GUID}.{OCP3_DOMAIN} -u admin -p {OCP3_PASSWORD}**
+$ **oc login https://master.{ocp3_guid}.{ocp3_domain} -u admin -p {ocp3_password}**
 The server uses a certificate signed by an unknown authority.
 You can bypass the certificate check, but any data you send to the server could be intercepted by others.
 Use insecure connections? (y/n): y
@@ -51,12 +51,12 @@ The second terminal window will be used for the destination 4.3 cluster. In that
 
 [source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
-$ **ssh {OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}**
-{OCP4_SSH_USER}@bastion.{OCP4_GUID}.{OCP4_DOMAIN}'s password:
+$ **ssh {ocp4_ssh_user}@bastion.{ocp4_guid}.{ocp4_domain}**
+{ocp4_ssh_user}@bastion.{ocp4_guid}.{ocp4_domain}'s password:
 Last login: Sun Mar 22 21:22:55 2020 from 66.26.68.90
-[{OCP4_SSH_USER}@bastion 0 ~]$
+[{ocp4_ssh_user}@bastion 0 ~]$
 
-$ **oc login https://api.cluster-{OCP4_GUID}.{OCP4_GUID}.{OCP4_DOMAIN}:6443 -u admin -p {OCP4_PASSWORD}**
+$ **oc login https://api.cluster-{ocp4_guid}.{ocp4_guid}.{ocp4_domain}:6443 -u admin -p {ocp4_password}**
 The server uses a certificate signed by an unknown authority.
 You can bypass the certificate check, but any data you send to the server could be intercepted by others.
 Use insecure connections? (y/n): y
@@ -142,7 +142,7 @@ migration-openshift-migration.apps.cluster-d7fd.d7fd.example.opentlc.com
 . Login with your credentials for the cluster.
 
 * Username: admin
-* Password: `{OCP4_PASSWORD}`
+* Password: `{ocp4_password}`
 
 image:screenshots/lab2/camUI.png[CAM UI]
 

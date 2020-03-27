@@ -1,12 +1,12 @@
 :markup-in-source: verbatim,attributes,quotes
-:OCP3_GUID: %OCP3_GUID%
-:OCP3_DOMAIN: %OCP3_DOMAIN%
-:OCP3_SSH_USER: %OCP3_SSH_USER%
-:OCP3_PASSWORD: %OCP3_PASSWORD%
-:OCP4_GUID: %OCP4_GUID%
-:OCP4_DOMAIN: %OCP4_DOMAIN%
-:OCP4_SSH_USER: %OCP4_SSH_USER%
-:OCP4_PASSWORD: %OCP4_PASSWORD%
+:ocp3_guid: %ocp3_guid%
+:ocp3_domain: %ocp3_domain%
+:ocp3_ssh_user: %ocp3_ssh_user%
+:ocp3_password: %ocp3_password%
+:ocp4_guid: %ocp4_guid%
+:ocp4_domain: %ocp4_domain%
+:ocp4_ssh_user: %ocp4_ssh_user%
+:ocp4_password: %ocp4_password%
 
 CAM is designed to migrate Application Workloads between OpenShift clusters. Specifically, CAM handles migration of k8s resource objects, persistent volumes, and internal images. CAM is designed to provide a migration experience while focusing on minimizing application downtime through the process.
 
@@ -85,11 +85,11 @@ Let’s bring up the webUI in preparation for our first Application Migration in
 [source,subs="{markup-in-source}"]
 --------------------------------------------------------------------------------
 $ **oc get routes migration -n openshift-migration -o jsonpath='{.spec.host}'**
-migration-openshift-migration.apps.cluster-{OCP4_GUID}.{OCP4_GUID}.{OCP4_DOMAIN}
+migration-openshift-migration.apps.cluster-{ocp4_guid}.{ocp4_guid}.{ocp4_domain}
 --------------------------------------------------------------------------------
 
 Next, open a browser to: +
-https://migration-openshift-migration.apps.cluster-{OCP4_GUID}.{OCP4_GUID}.{OCP4_DOMAIN}
+https://migration-openshift-migration.apps.cluster-{ocp4_guid}.{ocp4_guid}.{ocp4_domain}
 
 image:./screenshots/lab3/cam-main-screen.png[CAM Main Screen]
 

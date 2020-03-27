@@ -1,11 +1,11 @@
-:OCP3_GUID: %OCP3_GUID%
-:OCP3_DOMAIN: %OCP3_DOMAIN%
-:OCP3_SSH_USER: %OCP3_SSH_USER%
-:OCP3_PASSWORD: %OCP3_PASSWORD%
-:OCP4_GUID: %OCP4_GUID%
-:OCP4_DOMAIN: %OCP4_DOMAIN%
-:OCP4_SSH_USER: %OCP4_SSH_USER%
-:OCP4_PASSWORD: %OCP4_PASSWORD%
+:ocp3_guid: %ocp3_guid%
+:ocp3_domain: %ocp3_domain%
+:ocp3_ssh_user: %ocp3_ssh_user%
+:ocp3_password: %ocp3_password%
+:ocp4_guid: %ocp4_guid%
+:ocp4_domain: %ocp4_domain%
+:ocp4_ssh_user: %ocp4_ssh_user%
+:ocp4_password: %ocp4_password%
 
 == Overview
 
@@ -18,12 +18,12 @@ image:screenshots/lab1/labenv-overview.png[Lab Environment Overview]
 [width="100%",cols="50%,50%",options="header",]
 |===
 |Key |Value
-|GUID | {OCP3_GUID}
-|OCP Console |https://master.{OCP3_GUID}.{OCP3_DOMAIN}/console
-|Password |{OCP3_PASSWORD}
-|API |https://master.{OCP3_GUID}.{OCP3_DOMAIN}
-|Bastion Host |bastion.{OCP3_GUID}.{OCP3_DOMAIN}
-|Bastion SSH |{OCP3_SSH_USER}/{OCP3_PASSWORD}
+|GUID | {ocp3_guid}
+|OCP Console |https://master.{ocp3_guid}.{ocp3_domain}/console
+|Password |{ocp3_password}
+|API |https://master.{ocp3_guid}.{ocp3_domain}
+|Bastion Host |bastion.{ocp3_guid}.{ocp3_domain}
+|Bastion SSH |{ocp3_ssh_user}/{ocp3_password}
 |===
 
 === OpenShift 4.3 Cluster
@@ -31,10 +31,10 @@ image:screenshots/lab1/labenv-overview.png[Lab Environment Overview]
 [width="100%",cols="50%,50%",options="header",]
 |===
 |Key |Value
-|GUID | {OCP4_GUID}
-|OCP Console |http://console-openshift-console.apps.cluster-{OCP4_GUID}.{OCP4_GUID}.{OCP4_DOMAIN}
-|Password |{OCP4_PASSWORD}
-|API |https://api.cluster-{OCP4_GUID}.{OCP4_GUID}.{OCP4_DOMAIN}:6443
-|Bastion Host |bastion.{OCP4_GUID}.{OCP4_DOMAIN}
-|Bastion SSH |{OCP4_SSH_USER}/{OCP4_PASSWORD}
+|GUID | {ocp4_guid}
+|OCP Console |http://console-openshift-console.apps.cluster-{ocp4_guid}.{ocp4_guid}.{ocp4_domain}
+|Password |{ocp4_password}
+|API |https://api.cluster-{ocp4_guid}.{ocp4_guid}.{ocp4_domain}:6443
+|Bastion Host |bastion.{ocp4_guid}.{ocp4_domain}
+|Bastion SSH |{ocp4_ssh_user}/{ocp4_password}
 |===

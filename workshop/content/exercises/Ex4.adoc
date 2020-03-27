@@ -1,12 +1,12 @@
 :markup-in-source: verbatim,attributes,quotes
-:OCP3_GUID: %OCP3_GUID%
-:OCP3_DOMAIN: %OCP3_DOMAIN%
-:OCP3_SSH_USER: %OCP3_SSH_USER%
-:OCP3_PASSWORD: %OCP3_PASSWORD%
-:OCP4_GUID: %OCP4_GUID%
-:OCP4_DOMAIN: %OCP4_DOMAIN%
-:OCP4_SSH_USER: %OCP4_SSH_USER%
-:OCP4_PASSWORD: %OCP4_PASSWORD%
+:ocp3_guid: %ocp3_guid%
+:ocp3_domain: %ocp3_domain%
+:ocp3_ssh_user: %ocp3_ssh_user%
+:ocp3_password: %ocp3_password%
+:ocp4_guid: %ocp4_guid%
+:ocp4_domain: %ocp4_domain%
+:ocp4_ssh_user: %ocp4_ssh_user%
+:ocp4_password: %ocp4_password%
 
 == Migration at Scale via API (optional)
 
