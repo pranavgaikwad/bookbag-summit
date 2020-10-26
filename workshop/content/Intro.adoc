@@ -3,7 +3,7 @@
 :CLUSTER: %cluster%
 
 
-== Test Change OpenShift Application Migration Lab
+== Test Change No 2 OpenShift Application Migration Lab
 
 === Migrating from OCP/OCS 3 to OCP/OCS 4
 
