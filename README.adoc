@@ -1,7 +1,5 @@
 :markup-in-source: verbatim,attributes,quotes
 
-
-
 = Bookbag Template
 
 NOTE: This project is based on OpenShift Homeroom: https://github.com/openshift-homeroom.
